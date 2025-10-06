@@ -1,0 +1,146 @@
+html {  scroll-behavior: smooth;
+}
+
+.transparent-navbar {
+  padding: 0.3rem 1rem;
+  background: rgba(0, 123, 255, 0.15);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  transition: background 0.3s ease, backdrop-filter 0.3s ease, color 0.3s ease;
+  color: white;
+}
+
+.transparent-navbar .navbar-brand,
+.transparent-navbar .nav-link {
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.transparent-navbar.scrolled {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #444444; 
+}
+
+.transparent-navbar.scrolled .navbar-brand,
+.transparent-navbar.scrolled .nav-link {
+  color: #444444;
+}
+
+.transparent-navbar .nav-link:hover {
+  color: #f5e16c;
+}
+
+.navbar-collapse {
+  transition: height 0.3s ease;
+}
+
+@media (max-width: 991.98px) {
+  .transparent-navbar .navbar-collapse {
+    background: rgba(0, 123, 255, 0.15);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 0 0 0.5rem 0.5rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .transparent-navbar .nav-link {
+    padding: 0.5rem 1rem;
+  }
+}
+
+.carousel-caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  bottom: auto;
+  text-align: center;
+  padding: 1rem;
+}
+
+.carousel-caption h1,
+.carousel-caption h2,
+.carousel-caption h5,
+.carousel-caption p {
+  margin: 0.5rem 0;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.carousel-item {
+  transition: opacity 0.8s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .carousel-caption h1,
+  .carousel-caption h2 {
+    font-size: 1.75rem;
+  }
+  .carousel-caption h5 {
+    font-size: 1.25rem;
+  }
+  .carousel-caption p {
+    font-size: 1rem;
+  }
+.transparent-navbar .brand-text {
+        font-size: 0.85rem;
+    }
+
+    .transparent-navbar .navbar-brand img {
+        height: 30px;
+    }
+
+    /* Center links and icons in collapsed navbar */
+    .navbar-collapse {
+        text-align: center;
+    }
+    .navbar-collapse ul.navbar-nav {
+        justify-content: center;
+        margin: 0 auto;
+    }
+    .navbar-collapse ul.navbar-nav.list-inline {
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+    .start{
+        margin-bottom: 1rem;
+    }
+}
+
+.hero-bg,
+.features-bg,
+.about-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: -1;
+}
+
+.hero {
+  background-image: -moz-linear-gradient(to border-bottom, rgba 255, 255, 255, 0.5);
+  background-size: cover;
+  height: 100vh;
+}
+
+.features,
+.about {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,240 @@
+:root {
+  --radius: 0.5rem;
+  --shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+  --primary-light: #3b82f6;
+  --text-dark: #1e293b;
+  --text-light: #64748b;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.layout {
+    margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+}
+
+.page-content {
+  padding: 1.5rem 1rem 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto; 
+  width: 100%;
+}
+
+.page-content {
+  padding: 1.5rem 1rem 2rem 1rem;
+  width: 100%;      
+  margin: 0;        
+  max-width: none;  
+  box-sizing: border-box;
+}
+
+.report-form-section {
+  background: #fff;
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 100%;       
+  max-width: none;  
+  margin: 0;        
+  box-sizing: border-box;
+}
+
+.report-form-section p {
+  margin-bottom: 2rem;
+  color: var(--text-light);
+  text-align: center;
+}
+
+.report-form-section label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+}
+
+.report-form-section input,
+.report-form-section select,
+.report-form-section textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: var(--radius);
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.report-form-section textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+.report-form-section .btn {
+  min-width: 120px;
+}
+
+.preview-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.preview-item img {
+  width: 6rem;
+  height: 6rem;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.preview-item img:hover {
+  transform: scale(1.05);
+}
+
+.remove-image {
+  position: absolute;
+  top: -0.45rem;
+  right: -0.45rem;
+  background: crimson;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 1.25rem;
+  height: 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.25rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.image-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: rgba(17, 17, 17, 0.85);
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.image-modal.open {
+  display: flex;
+}
+
+.modal-content {
+  max-width: 70%;
+  max-height: 80%;
+  width: auto;
+  height: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  outline: 3px solid white;
+  object-fit: contain;
+}
+
+.close-modal {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+}
+
+.close-modal:hover {
+  color: var(--primary-light);
+}
+
+.modal-prev,
+.modal-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.5rem;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+  padding: 0 0.5rem;
+  z-index: 10000;
+}
+.modal-prev { left: 1rem; }
+.modal-next { right: 1rem; }
+.modal-prev:hover,
+.modal-next:hover { color: var(--primary-light); }
+
+#mapPreview {
+  height: 250px;
+  width: 100%;
+  border-radius: var(--radius);
+}
+
+@media (max-width: 767.98px) {
+  .page-content {
+    padding: 1rem;
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+  }
+
+  .report-form-section {
+    padding: 1.5rem;
+  }
+
+  .preview-item img {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .remove-image {
+    width: 1.2rem;
+    height: 1.2rem;
+    font-size: 0.85rem;
+    line-height: 1.2rem;
+  }
+
+  .modal-content {
+    max-width: 85%;
+    max-height: 75%;
+  }
+
+  .close-modal {
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.75rem;
+  }
+
+  .modal-prev,
+  .modal-next {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .report-form-section textarea {
+    min-height: 6rem;
+  }
+
+  .report-form-section .btn {
+    width: 100%;
+    margin-bottom: 0.75rem;
+  }
+
+  .report-form-section small.upload-guidance {
+    font-size: 0.75rem;
+  }
+
+  .modal-content {
+    max-width: 95%;
+    max-height: 70%;
+  }
+}

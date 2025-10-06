@@ -1,0 +1,199 @@
+/* ===== General Layout ===== */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* ===== Layout Container ===== */
+.layout {
+    display: flex;
+    flex-direction: row;
+    min-height: calc(100vh - var(--header-height));
+}
+
+.page-title {
+    font-size: 2rem;              /* Large readable size */
+    font-weight: 600;             /* Semi-bold */
+    color: #1f2937;               /* Dark gray (neutral tone) */
+    margin: 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #e5e7eb;
+    line-height: 1.2;
+}
+
+
+/* ===== Optional Page Title ===== */
+.page-title {
+    margin: 0;
+    padding-bottom: 1rem;
+}
+
+.page-content {
+    margin-left: var(--sidebar-width);
+    padding: 2rem;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* ===== Remove Top Margin from h1 ===== */
+.page-content h1 {
+  margin-top: 0;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1f2937;
+  padding-bottom: 0.75rem;
+  line-height: 1.2;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+/* ===== Status Badge Styles ===== */
+.status {
+    padding: 0.25rem 0.6rem;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.status.pending {
+    background-color: #fef3c7;
+    color: #b45309;
+}
+
+.status.approved {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.status.rejected {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  gap: 0.5rem;
+}
+
+.page-item {
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.page-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+  background-color: white;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.page-link:hover {
+  background-color: #ebf2ff;
+}
+
+.page-item.active .page-link {
+  background-color: #2563eb;
+  color: white;
+  font-weight: bold;
+}
+
+.page-item.disabled .page-link {
+  color: #999;
+  background-color: #f5f5f5;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ===== Mobile Adjustments (≤768px) ===== */
+@media (max-width: 768px) {
+    /* Layout & page content */
+    .layout {
+        flex-direction: column !important;
+        min-height: auto !important; /* remove extra vertical space */
+    }
+
+    .page-content {
+        margin-left: 0 !important; /* remove sidebar offset */
+        padding-top: calc(var(--header-height) + 0.5rem) !important; /* only navbar space */
+        padding-bottom: 1rem !important;
+    }
+
+    /* Page title smaller and centered */
+    .page-title {
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: 0.75rem;
+    }
+
+    /* Table container adjustments */
+    .table-responsive {
+        overflow-x: auto;
+        padding: 0.5rem !important;
+        margin-bottom: 6rem;
+    }
+
+    .report-table {
+        font-size: 0.7rem !important; /* slightly smaller font */
+        min-width: 600px; /* prevent collapsing badly */
+        border-collapse: collapse; /* tighter borders */
+    }
+
+    .report-table th,
+    .report-table td {
+        white-space: normal !important; /* allow wrapping */
+        padding: 0.25rem 0.4rem !important; /* reduced vertical & horizontal padding */
+        text-align: left;
+        border-width: 1px !important; /* thinner borders */
+    }
+
+    .report-table thead th {
+        padding: 0.3rem 0.5rem !important;
+        font-weight: 600;
+    }
+
+    /* Stack action buttons vertically */
+    .action-col .d-flex {
+        flex-direction: column !important;
+        gap: 0.2rem;
+        justify-content: flex-start;
+    }
+
+    .action-col .btn {
+        width: 100% !important;
+        font-size: 0.65rem;
+        padding: 0.25rem 0.35rem;
+        margin-bottom: 0 !important;
+    }
+
+    /* Pagination & wrapper full width */
+    .pagination-wrapper {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+
+    /* Adjust container padding */
+    .container-fluid {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .pagination{
+        margin-bottom: 2rem;
+    }
+}

@@ -1,0 +1,154 @@
+/* === Banner container === */
+.about-section {
+    background-color: #1e40af;
+}
+
+.banner-logos {
+    display: flex;
+    flex-direction: column; /* stack rows */
+    gap: 0.5rem;
+    border-left: 2px solid #e5e7eb; /* lighter neutral accent */
+    border-radius: 0.35rem;
+    padding: 0.4rem 0.6rem;
+    max-width: 100%;
+    margin-top: 0.75rem;
+}
+
+/* Each row inside the banner */
+.banner-logos .logo-row {
+    display: flex;
+    align-items: flex-start; /* aligns logo with top of text */
+    gap: 0.5rem;
+}
+
+/* Logo images */
+.banner-logos img {
+    max-width: 40px;
+    height: auto;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+}
+
+/* Banner text */
+.banner-logos p {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #f3f4f6; /* softer white */
+    line-height: 1.4;
+    letter-spacing: 0.25px;
+    font-family: "Roboto", sans-serif;
+}
+
+/* Glow Highlight */
+.highlight {
+    position: relative;
+    display: inline-block;
+    font-weight: 800;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(
+        270deg,
+        #d4af37,
+        #f5e16c,
+        #b8952f,
+        #f5e16c,
+        #d4af37
+    );
+    background-size: 400% 400%;
+
+    /* Vendor + Standard for max compatibility */
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+
+    animation: glowBackground 8s ease infinite;
+}
+
+/* Title */
+h1.display-5 {
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    font-size: 2.75rem; /* slightly smaller for balance */
+    line-height: 1.2;
+    letter-spacing: -0.5px; /* more refined */
+}
+
+/* Separator */
+.separator {
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #e5e7eb;
+    margin: 0 0.25rem;
+}
+
+/* Tagline / Typing text */
+.lead {
+    font-size: 1.15rem;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.85);
+    font-family: "Roboto", sans-serif;
+    line-height: 1.5;
+    letter-spacing: 0.3px;
+}
+
+/* Cursor animation */
+.cursor {
+    display: inline-block;
+    background-color: #fff;
+    width: 2px;
+    margin-left: 2px;
+    animation: blink 1s infinite;
+    height: 1.2em;
+    vertical-align: bottom;
+}
+
+/* === Responsive Tweaks === */
+@media (max-width: 768px) {
+    h1.display-5 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .lead {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .banner-logos {
+        padding: 0.6rem 0.75rem;
+        gap: 0.5rem;
+        margin-top: 0.75rem;
+    }
+
+    .banner-logos img {
+        max-width: 32px;
+    }
+
+    .banner-logos p {
+        font-size: 0.8rem;
+        line-height: 1.3;
+    }
+    @media (max-width: 768px) {
+    .about-section,
+    .banner-logos,
+    .banner-logos .logo-row,
+    .banner-logos img,
+    .banner-logos p,
+    h1.display-5,
+    .highlight,
+    .separator,
+    .lead,
+    .cursor {
+        display: none !important;
+    }
+}
+
+}

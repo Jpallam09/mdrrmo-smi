@@ -1,0 +1,215 @@
+:root {
+    --primary:       #1e40af;
+    --primary-light: #3b82f6;
+    --danger:        #dc2626;
+    --warning:       #f59e0b;
+    --success:       #22c55e;
+    --info:          #0d9488;
+    --purple:        #7c3aed;
+    --muted:         #6b7280;
+    --bg-white:      #ffffff;
+    --bg-light:      #f9fafb;
+    --text-dark:     #111827;
+    --text-light:    #6b7280;
+    --radius:        0.75rem;
+    --shadow:        0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ===== Page Layout ===== */
+body {
+    background-color: var(--bg-light);
+    margin: 0;
+    padding: 0;
+}
+
+.page-content {
+    font-family: sans-serif;
+    margin-left: var(--sidebar-width);
+    margin-top: 1rem;
+    padding: 1rem 2rem 2rem 2rem;
+    background-color: var(--bg-light);
+    box-sizing: border-box;
+}
+
+/* ===== Dashboard Title ===== */
+#dashboard-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+}
+
+/* ===== Widgets ===== */
+.widgets .widget {
+    background: var(--bg-white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: .1rem;
+    min-height: .1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    border-top: 4px solid transparent;
+    text-align: center;
+}
+
+.widgets .widget:hover {
+    transform: translateY(-0.4rem);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.widget a.widget-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+}
+
+.widget h2 {
+    font-size: 1.15rem;
+    font-weight: 550;
+    color: var(--text-dark);
+    margin-bottom: 1px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.count {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary);
+    margin: 0;
+}
+
+/* Accent Borders */
+#totalReportsWidget {
+    border-top-color: var(--primary);
+}
+#openReportsWidget {
+    border-top-color: var(--warning);
+}
+#resolvedReportsWidget {
+    border-top-color: var(--success);
+}
+#pendingRequestsWidget {
+    border-top-color: var(--muted);
+}
+#cancelRequestsWidget {
+    border-top-color: var(--info);
+}
+#editRequestsWidget {
+    border-top-color: var(--purple);
+}
+#deleteRequestsWidget {
+    border-top-color: var(--danger);
+}
+
+/* ===== Table Styling Consistency ===== */
+
+.report-table thead th {
+    background-color: var(--primary);
+    color: white;
+    font-weight: 600;
+}
+
+/* ===== Empty Table Message ===== */
+.text-muted i {
+    color: var(--text-light);
+}
+
+@media (min-width: 768px) {
+    .page-content {
+        margin-left: var(--sidebar-width);
+        padding: 2rem;
+    }
+
+    .widgets .col-md-4 {
+        flex: 0 0 33.3333%;
+        max-width: 33.3333%;
+    }
+
+    .bottom-nav {
+        display: none;
+    }
+}
+
+/* ---------------------- */
+/* Tablet (576px – 767px) */
+/* ---------------------- */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .page-content {
+        margin-left: 0;
+        padding: 1.5rem 1.5rem 4rem 1.5rem; /* leave space for optional bottom nav */
+    }
+
+    .widgets .col-md-4 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .bottom-nav {
+        display: flex; /* show bottom nav */
+    }
+}
+
+/* ---------------------- */
+/* Mobile (<576px) */
+/* ---------------------- */
+@media (max-width: 575.98px) {
+    .page-content {
+        margin-left: 0;
+        padding: 1rem 1rem 6rem 1rem; /* leave space for bottom nav */
+    }
+
+    .widgets .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .widget h2 {
+        font-size: 1rem;
+    }
+
+    .count {
+        font-size: 1.5rem;
+    }
+
+    .bottom-nav {
+        display: flex !important; /* force display */
+    }
+}
+
+/* ---------------------- */
+/* Table responsiveness */
+/* ---------------------- */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* Make table text fit better on small screens */
+@media (max-width: 575.98px) {
+    .report-table th,
+    .report-table td {
+        font-size: 0.75rem;
+        padding: 0.35rem 0.5rem;
+    }
+}
+
+/* Optional: truncate long table text on mobile */
+@media (max-width: 575.98px) {
+    .report-table td {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 120px;
+    }
+}

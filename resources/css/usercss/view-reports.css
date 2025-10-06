@@ -1,0 +1,284 @@
+:root {
+    --primary: #2563eb;
+    --primary-light: #3b82f6;
+    --danger: #dc2626;
+    --danger-light: #ef4444;
+    --secondary: #4b5563;
+    --light-bg: #f9fafb;
+    --border: #e5e7eb;
+    --text-dark: #111827;
+    --text-light: #6b7280;
+    --font-base: "Segoe UI", Roboto, sans-serif;
+    --max-width: 65rem;
+    --header-height: 3rem;
+    --sidebar-width: 16rem;
+}
+
+/* ===== Base Layout ===== */
+body {
+    font-family: var(--font-base);
+    background: var(--light-bg);
+    margin: 0;
+    padding: 0;
+    color: var(--text-dark);
+}
+
+.layout {
+    display: flex;
+    min-height: calc(100vh - var(--header-height));
+    margin-top: 2rem;
+}
+
+.page-content {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+/* ===== Header ===== */
+.page-content h1.h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+/* ===== Badges ===== */
+.badge {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 1rem;
+    margin-left: 0.5rem;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.875rem;
+    color: var(--primary);
+    text-decoration: none;
+    padding: 0.4rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+.back-link:hover {
+    background: #f0f4ff;
+}
+
+.badge-pending {
+    background: #facc15;
+    color: #000;
+}
+
+.badge-accepted {
+    background: #22c55e;
+    color: #fff;
+}
+
+.badge-rejected {
+    background: var(--danger-light);
+    color: #fff;
+}
+
+.badge-viewed {
+    background: var(--primary-light);
+    color: #fff;
+}
+
+/* ===== Report Card ===== */
+.report-card
+.Feed_back {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== Report Header ===== */
+.report-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1.25rem;
+}
+
+.info-box {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.info-box strong {
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.info-box.highlight {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* ===== Description ===== */
+.description-section h3,
+.attachments-section h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+    color: var(--text-dark);
+}
+
+.description-box {
+    text-align: left;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: var(--light-bg);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border);
+}
+
+/* ===== Attachments ===== */
+.attachments-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.attachment-item {
+    position: relative;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.thumbnail:hover {
+    transform: scale(1.05);
+}
+
+/* ===== Action Buttons ===== */
+.action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+}
+
+/* ===== Image Modal Viewer ===== */
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.image-modal .modal-content {
+    max-width: 90vw;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 0.75rem;
+    box-shadow: 0 0 2px #000;
+}
+
+.image-modal .close,
+.image-modal .prev,
+.image-modal .next {
+    position: absolute;
+    color: white;
+    font-size: 1.75rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.2s;
+}
+
+.image-modal .close {
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 2rem;
+}
+
+.image-modal .prev {
+    top: 50%;
+    left: 1.5rem;
+    transform: translateY(-50%);
+}
+
+.image-modal .next {
+    top: 50%;
+    right: 1.5rem;
+    transform: translateY(-50%);
+}
+
+.image-modal .close:hover,
+.image-modal .prev:hover,
+.image-modal .next:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.caption {
+    color: white;
+    font-size: 0.9375rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .report-header {
+        flex-direction: column;
+    }
+
+    .action-buttons {
+        justify-content: center;
+    }
+
+    .btn-primary,
+    .btn-danger {
+        width: 100%;
+    }
+
+    .attachment-item {
+        width: 6rem;
+        height: 6rem;
+    }
+
+    .image-modal .modal-content {
+        max-height: 60vh;
+    }
+}

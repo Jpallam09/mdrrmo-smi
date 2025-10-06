@@ -1,0 +1,183 @@
+:root {
+    --header-height: 3rem;
+    --sidebar-width: 16rem;
+}
+
+/* Layout */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.layout {
+    display: flex;
+    flex-direction: row;
+    min-height: calc(100vh - var(--header-height));
+}
+
+.page-title {
+    font-size: 2rem; /* Large readable size */
+    font-weight: 600; /* Semi-bold */
+    color: #1f2937; /* Neutral dark gray */
+    margin: 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #e5e7eb;
+    line-height: 1.2;
+}
+
+.page-content {
+    margin-left: var(--sidebar-width);
+    padding: 1rem 2rem 2rem 2rem;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+}
+
+
+/* Buttons */
+.btn-view,
+.btn-mark,
+.btn-approve,
+.btn-reject {
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+    min-width: 100px;
+}
+
+.btn-mark {
+    background-color: #10b981;
+    color: white;
+}
+.btn-mark:hover {
+    background-color: #059669;
+}
+
+.btn-approve {
+    background-color: #10b981;
+    color: white;
+}
+.btn-approve:hover {
+    background-color: #059669;
+}
+
+.btn-reject {
+    background-color: #ef4444;
+    color: white;
+}
+.btn-reject:hover {
+    background-color: #dc2626;
+}
+
+.btn-mark:disabled,
+.btn-approve:disabled,
+.btn-reject:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    max-width: 600px;
+    width: 90%;
+}
+
+.modal-section {
+    margin-bottom: 1.5rem;
+}
+
+.image-preview-container img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-right: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.btn-accept,
+.btn-reject {
+    padding: 0.5rem 1.2rem;
+    border: none;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    color: white;
+}
+
+.btn-accept {
+    background-color: #16a34a;
+}
+.btn-reject {
+    background-color: #dc2626;
+}
+
+/* ===== Mobile Layout Fix ===== */
+@media (max-width: 768px) {
+    .layout {
+        flex-direction: column !important;
+        min-height: auto !important; /* remove huge space */
+    }
+
+    .page-content {
+        margin-left: 0 !important; /* no sidebar margin */
+        padding-top: calc(var(--header-height) + 0.5rem) !important; /* only navbar height + small gap */
+        padding-bottom: 1rem !important;
+    }
+
+    /* Table adjustments */
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .report-table th,
+    .report-table td {
+        font-size: 0.75rem;
+        white-space: normal;
+        padding: 0.35rem 0.5rem;
+        text-align: left;
+    }
+
+    /* Stack action buttons vertically */
+    .action-col .d-flex {
+        flex-direction: column !important;
+        gap: 0.25rem;
+    }
+
+    .action-col .btn {
+        width: 100% !important;
+        font-size: 0.7rem;
+        padding: 0.35rem 0.5rem;
+        margin-bottom: 0 !important;
+    }
+
+    .pagination{
+        margin-bottom: 2rem;
+    }
+}

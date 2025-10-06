@@ -1,0 +1,161 @@
+/* ===== General Layout ===== */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* ===== Layout & Content Area ===== */
+.layout {
+    display: flex;
+    flex-direction: row;
+    min-height: calc(100vh - var(--header-height));
+}
+
+.page-title {
+    font-size: 2rem; /* Large readable size */
+    font-weight: 600; /* Semi-bold */
+    color: #1f2937; /* Dark gray (neutral tone) */
+    margin: 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #e5e7eb;
+    line-height: 1.2;
+}
+
+.page-content {
+    margin-left: var(--sidebar-width);
+    padding: 2rem;
+    background-color: #f4f4f4;
+    box-sizing: border-box;
+}
+
+/* ===== Table Styles ===== */
+.table-container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+    width: 100%;
+    overflow-x: auto;
+    box-sizing: border-box;
+}
+
+/* ===== Button Styles ===== */
+.btn-view {
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    background-color: #3b82f6;
+    color: white;
+}
+
+.btn-view:hover {
+    background-color: #2563eb;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .layout {
+        flex-direction: column;
+    }
+
+    .page-content {
+        margin-left: 0;
+        padding: 1.5rem;
+    }
+
+    .page-content h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .table-container {
+        padding: 1rem;
+    }
+
+    .btn-view {
+        padding: 0.35rem 0.7rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Mobile fixes (≤768px) */
+@media (max-width: 768px) {
+    /* Stack layout vertically */
+    .layout {
+        min-height: auto !important;
+        flex-direction: column;
+    }
+
+    /* Page content fills width */
+    .page-content {
+        margin-left: 0 !important;
+        padding: 1rem;
+    }
+
+    /* Title smaller and centered */
+    .page-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    /* Table responsive tweaks */
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* smooth iOS scrolling */
+        padding: 0.5rem;
+    }
+
+    .report-table th,
+    .report-table td {
+        white-space: normal;
+        font-size: 0.75rem;
+        text-align: left;
+        padding: 0.35rem 0.5rem;
+    }
+
+    /* Action buttons stack vertically */
+    .report-table .d-flex.gap-1 {
+        flex-direction: column !important;
+    }
+
+    .report-table .btn {
+        width: 100%;
+        font-size: 0.75rem;
+        padding: 0.3rem;
+        margin-bottom: 0.25rem;
+    }
+
+    /* Pagination & search form full width */
+    #searchForm {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+
+    .pagination{
+       margin-bottom: 2rem;
+    }
+
+    #searchForm input,
+    #searchForm select,
+    #searchForm button,
+    #searchForm a {
+        width: 100% !important;
+    }
+
+    .pagination {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+        /* Reduce top padding on mobile */
+    .page-content {
+        padding-top: 3rem !important; /* smaller top padding */
+    }
+}
+

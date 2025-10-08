@@ -174,14 +174,14 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-sm mb-2" id="updateReportBtn">
+                <button type="submit" class="btn update-btn btn-primary btn-sm mb-2" id="updateReportBtn">
                     <i class="fas fa-check-circle me-1"></i>
                     Update Report
                 </button>
             </form>
 
             <!-- Cancel Editing Button -->
-            <button type="button" class="btn btn-outline-danger btn-sm w-auto" id="cancelEditButton"
+            <button type="button" class="btn cancel-edit-btn btn-outline-danger btn-sm w-auto" id="cancelEditButton"
                 data-url="{{ route('user.report.view', $report->id) }}">
                 <i class="fas fa-times-circle me-1"></i>
                 Cancel Editing

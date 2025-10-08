@@ -175,44 +175,41 @@
                         @endif
                     </div>
 
-                    {{-- ... keep the rest as is ... --}}
-
-                    {{-- Action Buttons / Status Notice --}}
                     <div class="action-section mt-3">
                         @if (
                             !in_array($report->report_status, [
                                 \App\Models\IncidentReporting\IncidentReportUser::STATUS_SUCCESS,
                                 \App\Models\IncidentReporting\IncidentReportUser::STATUS_CANCELED,
                             ]))
-                            {{-- Buttons visible --}}
-                            <div class="action-buttons d-flex gap-2">
+                            <div class="action-buttons row g-2 justify-content-md-end">
                                 <!-- Request Edit Button -->
-                                <button type="button" class="btn btn-primary btn-sm btn-edit-request"
-                                    data-edit-pending="{{ $report->editRequest && $report->editRequest->status === 'pending' ? 'true' : 'false' }}"
-                                    data-edit-url="{{ route('user.report.edit', $report->id) }}">
-                                    <i class="fa-solid fa-pen me-1"></i> Request Edit
-                                </button>
-
-
-                                <form method="POST" action="{{ route('user.report.delete', $report->id) }}"
-                                    class="delete-request-form">
-                                    @csrf
-                                    @method('DELETE')
-                                    <!-- hidden input that JS will fill -->
-                                    <input type="hidden" name="reason" class="delete-reason">
-                                    <button type="button" class="btn btn-outline-danger btn-sm btn-delete-request">
-                                        <i class="fa-solid fa-trash me-1"></i> Request Delete
+                                <div class="col-6 col-md-auto">
+                                    <button type="button" class="btn btn-primary btn-sm w-100 btn-edit-request"
+                                        data-edit-pending="{{ $report->editRequest && $report->editRequest->status === 'pending' ? 'true' : 'false' }}"
+                                        data-edit-url="{{ route('user.report.edit', $report->id) }}">
+                                        <i class="fa-solid fa-pen me-1"></i> Request Edit
                                     </button>
-                                </form>
+                                </div>
 
-
+                                <!-- Request Delete Button -->
+                                <div class="col-6 col-md-auto">
+                                    <form method="POST" action="{{ route('user.report.delete', $report->id) }}"
+                                        class="delete-request-form w-100">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="hidden" name="reason" class="delete-reason">
+                                        <button type="button"
+                                            class="btn btn-outline-danger btn-sm w-100 btn-delete-request">
+                                            <i class="fa-solid fa-trash me-1"></i> Request Delete
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         @else
-                            {{-- Show notice when report is success or canceled --}}
                             @php
                                 $alertClass = $report->isSuccess() ? 'alert-success' : 'alert-danger';
                                 $iconClass = $report->isSuccess() ? 'fa-circle-check' : 'fa-circle-xmark';
-                                $statusText = $report->readableStatus(); // <-- use readableStatus()
+                                $statusText = $report->readableStatus();
                             @endphp
                             <div class="alert {{ $alertClass }} d-flex align-items-start shadow-sm">
                                 <i class="fa-solid {{ $iconClass }} fs-4 me-2"></i>
@@ -225,6 +222,7 @@
                             </div>
                         @endif
                     </div>
+
 
                 </div>
             @else

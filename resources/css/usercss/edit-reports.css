@@ -259,7 +259,7 @@ body {
   font-size: 0.9375rem;
   margin-top: 1rem;
 }
- 
+
 .reason-section textarea {
   height: 100px;
   min-height: 0;
@@ -271,6 +271,7 @@ body {
     margin-left: 0;
     padding: 1rem;
     margin-bottom: 2rem;
+    margin-top: 1.5rem;
   }
 
   .report-header {
@@ -315,6 +316,19 @@ body {
   .image-modal .prev  { left: 0.5rem; }
   .image-modal .next  { right: 0.5rem; }
 
+    .attachment-item > .btn-danger {
+        width: 1.2rem !important;
+        height: 1.2rem !important;
+        font-size: 0.8rem !important;
+        top: 0.1rem !important;
+        right: 0.1rem !important;
+    }
+
+    .attachment-item > .btn-danger i {
+        font-size: 0.7rem !important;
+        line-height: 1;
+    }
+
   .locate-btn,
   .rest-btn {
     font-size: 0.75rem;
@@ -328,8 +342,8 @@ body {
   #cancelEditButton {
     font-size: 0.75rem;
     padding: 0.4rem 0.8rem;
-    width: 100%;          
-    max-width: 16rem;      
+    width: 100%;
+    max-width: 16rem;
   }
 
   .btn i,
@@ -339,6 +353,19 @@ body {
   #cancelEditButton i {
     font-size: 0.8rem;
   }
+
+.cancel-edit-btn,
+.update-btn {
+    display: block;
+    width: 100% !important;
+    max-width: 16rem;
+    margin: 0 auto 0.5rem;
+}
+
+.cancel-edit-btn {
+    width: 100% !important;
+    max-width: 16rem !important;
+}
 
   #locateBtn,
   #resetButton {

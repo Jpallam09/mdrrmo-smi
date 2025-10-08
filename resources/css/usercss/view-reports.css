@@ -89,8 +89,7 @@ body {
 }
 
 /* ===== Report Card ===== */
-.report-card
-.Feed_back {
+.report-card .Feed_back {
     background: #fff;
     border: 1px solid var(--border);
     border-radius: 0.75rem;
@@ -260,12 +259,29 @@ body {
 
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
+    .page-content {
+        margin-bottom: 2rem;
+    }
+
     .report-header {
         flex-direction: column;
     }
 
     .action-buttons {
         justify-content: center;
+    }
+
+    .action-buttons {
+        gap: 0 !important; 
+    }
+    .action-buttons .btn {
+        width: 100% !important;
+        display: block;
+        margin: 0; 
+    }
+    .action-buttons .col-6 {
+        width: 100%;
+        padding: 0; 
     }
 
     .btn-primary,

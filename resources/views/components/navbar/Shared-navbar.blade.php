@@ -3,7 +3,7 @@
         <ul class="navbar__menu d-flex align-items-center gap-3 mb-0 list-unstyled">
             <!-- User info -->
             <li class="d-flex align-items-center gap-2">
-                <span class="d-none d-md-inline">{{ auth()->user()->user_name }}</span>
+                <span class="user-name">{{ auth()->user()->user_name }}</span>
                 <img src="{{ Auth::user()?->profile_picture
                     ? asset('storage/profile_pictures/' . Auth::user()->profile_picture)
                     : asset('images/pfp.png') }}"

@@ -64,6 +64,12 @@ body {
     padding: 0;
 }
 
+.user-name {
+  font-size: 0.9rem;
+  margin-left: 0.3rem;
+  white-space: nowrap;
+}
+
 .notification-badge {
     width: 1.1rem;
     height: 1.1rem;

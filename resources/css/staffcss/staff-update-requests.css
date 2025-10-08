@@ -131,6 +131,7 @@ body {
         margin-left: 0 !important; /* remove sidebar offset */
         padding-top: calc(var(--header-height) + 0.5rem) !important; /* only navbar space */
         padding-bottom: 1rem !important;
+        
     }
 
     /* Page title smaller and centered */

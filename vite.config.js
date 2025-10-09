@@ -3,18 +3,18 @@ import laravel from 'laravel-vite-plugin';
 
 export default defineConfig({
     server: {
-        host: 'localhost',
+        host: '72.60.210.215',
         port: 5173,
         strictPort: true,
         cors: {
-            origin: ['http://localhost', 'http://127.0.0.1'],
+            origin: ['http://72.60.210.215', 'http://localhost', 'http://127.0.0.1'], 
             credentials: true,
             methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
             allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
         },
         hmr: {
             port: 5173,
-            host: 'localhost'
+            host: '72.60.210.215'
         }
     },
     plugins: [
@@ -36,7 +36,7 @@ export default defineConfig({
                 // User CSS
                 'resources/css/usercss/user-incident-reporting.css',
                 'resources/css/usercss/user-dashboard-reporting.css',
-                'resources/css/usercss/user-profile.css',
+                'resources/css/usercss/user-profile.css', 
                 'resources/css/usercss/view-reports.css',
                 'resources/css/usercss/edit-reports.css',
 
@@ -64,7 +64,7 @@ export default defineConfig({
                 'resources/js/userjs/view-reports.js',
                 'resources/js/userjs/edit-reports.js',
                 'resources/js/userjs/edit-reports-location.js',
-                'resources/js/userjs/user-profile.js',
+                'resources/js/userjs/user-profile.js', 
 
                 // Staff JS
                 'resources/js/staffjs/staff-dashboard.js',

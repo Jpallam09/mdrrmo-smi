@@ -34,7 +34,6 @@ body {
     background-color: #f4f4f4;
 }
 
-
 /* Buttons */
 .btn-view,
 .btn-mark,
@@ -142,42 +141,75 @@ body {
 @media (max-width: 768px) {
     .layout {
         flex-direction: column !important;
-        min-height: auto !important; /* remove huge space */
+        min-height: auto !important; 
     }
 
     .page-content {
-        margin-left: 0 !important; /* no sidebar margin */
-        padding-top: calc(var(--header-height) + 0.5rem) !important; /* only navbar height + small gap */
+        margin-left: 0 !important;
+        padding-top: calc(
+            var(--header-height) + 0.5rem
+        ) !important; 
         padding-bottom: 1rem !important;
     }
 
-    /* Table adjustments */
     .table-responsive {
         overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
-    .report-table th,
-    .report-table td {
+    .report-table tbody td:nth-child(n + 2) {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .report-table tbody td:nth-child(2) {
+        max-width: 120px;
+    }
+    .report-table tbody td:nth-child(3) {
+        max-width: 180px;
+    }
+    .report-table tbody td:nth-child(4) {
+        max-width: 120px;
+    }
+    .report-table tbody td:nth-child(5) {
+        max-width: 120px;
+    }
+
+    .report-table thead th:nth-child(n + 2) {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 150px;
+    }
+
+    .report-table tbody td:nth-child(7) .btn {
+        width: 100%;
         font-size: 0.75rem;
-        white-space: normal;
-        padding: 0.35rem 0.5rem;
-        text-align: left;
+        padding: 0.3rem;
+        margin-bottom: 0.25rem;
     }
 
-    /* Stack action buttons vertically */
-    .action-col .d-flex {
-        flex-direction: column !important;
-        gap: 0.25rem;
+    .report-table .btn {
+        width: 100%;
+        font-size: 0.75rem;
+        padding: 0.3rem;
+        margin-bottom: 0.25rem;
     }
 
-    .action-col .btn {
-        width: 100% !important;
-        font-size: 0.7rem;
-        padding: 0.35rem 0.5rem;
-        margin-bottom: 0 !important;
+    .btn.btn-sm .btn-primary .btn-danger .btn-success .text-truncate {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        padding: 0.4rem 0.5rem;
+        font-size: 1rem;
     }
 
-    .pagination{
+    .btn .btn-sm .btn-primary .text-truncate span {
+        display: none;
+    }
+    .pagination {
         margin-bottom: 2rem;
     }
 }

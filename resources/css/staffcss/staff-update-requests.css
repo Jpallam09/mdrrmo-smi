@@ -141,46 +141,64 @@ body {
         margin-bottom: 0.75rem;
     }
 
-    /* Table container adjustments */
-    .table-responsive {
+        .table-responsive {
         overflow-x: auto;
-        padding: 0.5rem !important;
-        margin-bottom: 6rem;
+        -webkit-overflow-scrolling: touch;
     }
 
-    .report-table {
-        font-size: 0.7rem !important; /* slightly smaller font */
-        min-width: 600px; /* prevent collapsing badly */
-        border-collapse: collapse; /* tighter borders */
+    .report-table tbody td:nth-child(n + 2) {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
-    .report-table th,
-    .report-table td {
-        white-space: normal !important; /* allow wrapping */
-        padding: 0.25rem 0.4rem !important; /* reduced vertical & horizontal padding */
-        text-align: left;
-        border-width: 1px !important; /* thinner borders */
+    .report-table tbody td:nth-child(2) {
+        max-width: 120px;
+    }
+    .report-table tbody td:nth-child(3) {
+        max-width: 180px;
+    }
+    .report-table tbody td:nth-child(4) {
+        max-width: 120px;
+    }
+    .report-table tbody td:nth-child(5) {
+        max-width: 120px;
     }
 
-    .report-table thead th {
-        padding: 0.3rem 0.5rem !important;
-        font-weight: 600;
+    .report-table thead th:nth-child(n + 2) {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 150px;
     }
 
-    /* Stack action buttons vertically */
-    .action-col .d-flex {
-        flex-direction: column !important;
-        gap: 0.2rem;
-        justify-content: flex-start;
+    .report-table tbody td:nth-child(7) .btn {
+        width: 100%;
+        font-size: 0.75rem;
+        padding: 0.3rem;
+        margin-bottom: 0.25rem;
     }
 
-    .action-col .btn {
-        width: 100% !important;
-        font-size: 0.65rem;
-        padding: 0.25rem 0.35rem;
-        margin-bottom: 0 !important;
+    .report-table .btn {
+        width: 100%;
+        font-size: 0.75rem;
+        padding: 0.3rem;
+        margin-bottom: 0.25rem;
     }
 
+    .btn.btn-sm.btn-primary.text-truncate {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        padding: 0.4rem 0.5rem;
+        font-size: 9px;
+    }
+
+    .btn.btn-sm.btn-primary.text-truncate span {
+        display: none;
+    }
+   
     /* Pagination & wrapper full width */
     .pagination-wrapper {
         flex-wrap: wrap;

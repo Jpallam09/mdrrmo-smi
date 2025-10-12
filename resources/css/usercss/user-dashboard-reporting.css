@@ -126,38 +126,85 @@ body {
     color: var(--text-light);
 }
 
+/* ---------------------- */
+/* Desktop (≥768px) */
+/* ---------------------- */
 @media (min-width: 768px) {
     .page-content {
         margin-left: var(--sidebar-width);
         padding: 2rem;
+        width: calc(100% - var(--sidebar-width));
+        box-sizing: border-box;
+        overflow-x: hidden;
     }
 
     .widgets .col-md-4 {
         flex: 0 0 33.3333%;
         max-width: 33.3333%;
+        box-sizing: border-box;
     }
 
     .bottom-nav {
         display: none;
     }
+
+    .report-table th,
+    .report-table td {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
 }
 
 /* ---------------------- */
-/* Tablet (576px – 767px) */
+/* Tablet (≥576px and <768px) */
 /* ---------------------- */
 @media (min-width: 576px) and (max-width: 767.98px) {
     .page-content {
         margin-left: 0;
-        padding: 1.5rem 1.5rem 4rem 1.5rem; /* leave space for optional bottom nav */
+        padding: 1.5rem 1.5rem 4rem 1.5rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .search-bar-container {
+        width: 100%;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        box-sizing: border-box;
+    }
+
+    .search-bar-container form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .search-bar-container input,
+    .search-bar-container select,
+    .search-bar-container button {
+        flex: 1 1 48%;
+        min-width: 120px;
+        box-sizing: border-box;
     }
 
     .widgets .col-md-4 {
         flex: 0 0 50%;
         max-width: 50%;
+        box-sizing: border-box;
     }
 
     .bottom-nav {
-        display: flex; /* show bottom nav */
+        display: flex;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .report-table th,
+    .report-table td {
+        font-size: 0.8rem;
+        padding: 0.45rem;
     }
 }
 
@@ -167,12 +214,15 @@ body {
 @media (max-width: 575.98px) {
     .page-content {
         margin-left: 0;
-        padding: 1rem 1rem 6rem 1rem; /* leave space for bottom nav */
+        padding: 1rem 1rem 6rem 1rem;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .widgets .col-md-4 {
         flex: 0 0 100%;
         max-width: 100%;
+        box-sizing: border-box;
     }
 
     .widget h2 {
@@ -183,33 +233,51 @@ body {
         font-size: 1.5rem;
     }
 
-    .bottom-nav {
-        display: flex !important; /* force display */
+    .search-bar-container {
+        width: 100%;
+        padding: 0.75rem;
+        margin-bottom: 0.75rem;
+        box-sizing: border-box;
     }
-}
 
-/* ---------------------- */
-/* Table responsiveness */
-/* ---------------------- */
-.table-responsive {
-    overflow-x: auto;
-}
+    .search-bar-container form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+    }
 
-/* Make table text fit better on small screens */
-@media (max-width: 575.98px) {
+    .search-bar-container input,
+    .search-bar-container select,
+    .search-bar-container button {
+        width: 100% !important;
+        margin-bottom: 0;
+        font-size: 0.85rem;
+        padding: 0.35rem 0.5rem;
+        box-sizing: border-box;
+    }
+
+    .report-table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
     .report-table th,
     .report-table td {
         font-size: 0.75rem;
         padding: 0.35rem 0.5rem;
-    }
-}
-
-/* Optional: truncate long table text on mobile */
-@media (max-width: 575.98px) {
-    .report-table td {
         white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 120px;
+    }
+
+    .bottom-nav {
+        display: flex !important;
+        width: 100%;
+        box-sizing: border-box;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 1050;
     }
 }

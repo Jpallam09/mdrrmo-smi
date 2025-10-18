@@ -6,6 +6,7 @@ use App\Http\Controllers\IncidentReporting\FeedbackCommentController;
 use App\Http\Controllers\IncidentReporting\EditRequestController;
 use App\Http\Controllers\IncidentReporting\DeleteRequestController;
 use App\Http\Controllers\ProfileControllers\ReportStaffProfileController;
+use App\Models\IncidentReporting\IncidentReportUser;
 
 Route::prefix('incidentReporting')
     ->middleware('auth')
@@ -16,6 +17,11 @@ Route::prefix('incidentReporting')
             ->middleware(['check.role:incident_reporting,staff', 'prevent-back-history'])
             ->as('staff.report.')
             ->group(function () {
+
+                Route::get('/check-new-reports', function () {
+                    $count = IncidentReportUser::count();
+                    return response()->json(['count' => $count]);
+                })->name('checkNewReports');
 
                 // Dashboard
                 Route::get('/dashboard', [IncidentReportStaffController::class, 'dashboard'])

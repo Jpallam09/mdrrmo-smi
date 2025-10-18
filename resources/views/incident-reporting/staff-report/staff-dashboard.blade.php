@@ -109,7 +109,7 @@
         };
     </script>
     @include('sweetalert::alert')
-    @vite(['resources/js/componentsjs/navbar.js', 'resources/js/staffjs/staff-dashboard.js'])
+    @vite(['resources/js/componentsjs/navbar.js', 'resources/js/staffjs/staff-dashboard.js', 'resources/js/staffjs/notify.js'])
     <!-- Bootstrap Bundle -->
     <script src="{{ asset('bootstrap-5.3.7-dist/js/bootstrap.bundle.min.js') }}"></script>
 </body>

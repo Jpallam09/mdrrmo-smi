@@ -74,6 +74,7 @@ export default defineConfig({
                 'resources/js/staffjs/staff-report-view.js',
                 'resources/js/staffjs/staff-update-requests.js',
                 'resources/js/staffjs/staff-show-edit-request.js',
+                'resources/js/staffjs/notify.js',
             ],
             refresh: true,
         }),

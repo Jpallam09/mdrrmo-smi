@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
     @vite('resources/css/usercss/view-reports.css')
-    @vite('resources/css/componentscss/navbarCss/shared-navbar.css')
+    @vite('resources/css/componentscss/navbarcss/shared-navbar.css')
 
 </head>
 

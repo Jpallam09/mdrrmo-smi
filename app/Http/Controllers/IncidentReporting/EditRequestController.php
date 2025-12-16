@@ -103,7 +103,7 @@ class EditRequestController extends Controller
 
         Alert::success('Edit Request Approved', 'The changes have been applied successfully.')->autoClose(3000);
 
-        return redirect()->route('staff.reporting.edit.index');
+        return back();
     }
 
     /**

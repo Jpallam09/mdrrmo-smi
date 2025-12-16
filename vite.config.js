@@ -3,19 +3,14 @@ import laravel from 'laravel-vite-plugin';
 
 export default defineConfig({
     server: {
-        host: 'localhost',
+        host: true,      // allows localhost + IP access
         port: 5173,
         strictPort: true,
-        cors: {
-            origin: ['http://localhost', 'http://127.0.0.1'],
-            credentials: true,
-            methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-            allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
-        },
+        cors: true,      // enable all origins for dev
         hmr: {
-            port: 5173,
-            host: 'localhost'
-        }
+            host: 'localhost',  // make sure this matches APP_URL host
+            protocol: 'ws',
+        },
     },
     plugins: [
         laravel({

@@ -1,0 +1,101 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      run-tests:
+        description: 'Run Laravel tests'
+        required: false
+        default: 'true'
+      build-assets:
+        description: 'Run Node build'
+        required: false
+        default: 'true'
+      deploy:
+        description: 'Deploy to server'
+        required: false
+        default: 'false'
+
+jobs:
+  laravel-tests:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs['run-tests'] == 'true' }}
+
+    services:
+      mysql:
+        image: mysql:8
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: test_db
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd "mysqladmin ping --silent"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 3
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.3
+          extensions: mbstring, bcmath, pdo_mysql, tokenizer, xml
+          coverage: none
+
+      - name: Install Composer dependencies
+        run: composer install --no-progress --no-suggest --prefer-dist
+
+      - name: Copy .env
+        run: cp .env.example .env
+
+      - name: Generate app key
+        run: php artisan key:generate
+
+      - name: Run migrations
+        run: php artisan migrate --env=testing
+
+      - name: Run tests
+        run: php artisan test
+
+  node-build:
+    runs-on: ubuntu-latest
+    needs: laravel-tests
+    if: ${{ github.event.inputs['build-assets'] == 'true' }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build assets
+        run: npm run build
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: node-build
+    if: ${{ github.event.inputs['deploy'] == 'true' && github.ref == 'refs/heads/main' }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy to server
+        run: |
+          echo "Add your deploy commands here"
+          # Example:
+          # rsync -avz --exclude='node_modules' ./ user@yourserver:/var/www/mdrrmo-smi/

@@ -1,6 +1,6 @@
 FROM php:8.2-fpm
 
-# Install system dependencies & PHP extensions needed for Laravel
+# Install system dependencies, PHP extensions, and Node.js (for Vite)
 RUN apt-get update && apt-get install -y \
     git \
     curl \
@@ -9,7 +9,9 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     zip \
     unzip \
-    nginx
+    nginx \
+    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -20,17 +22,20 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www/html
 
-# Copy existing application directory contents
+# Copy application files (including package.json and composer files first for caching)
 COPY . /var/www/html
 
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
+# Install Node dependencies and build Vite assets for production
+RUN npm install && npm run build
+
 # Set permissions for Laravel storage and cache
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Write a clean Nginx configuration template (using port 80 as default for local, replaced dynamically on Render)
+# Write a clean Nginx configuration template
 RUN echo 'server { \
     listen __PORT__; \
     index index.php index.html; \
@@ -46,7 +51,7 @@ RUN echo 'server { \
     } \
 }' > /etc/nginx/sites-available/default
 
-# Expose port 80 (local default)
+# Expose port 80
 EXPOSE 80
 
 # Startup script to handle Render's dynamic $PORT substitution, start Nginx, and run PHP-FPM

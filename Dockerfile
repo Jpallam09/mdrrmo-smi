@@ -23,11 +23,16 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www/html
 
-# Copy application files (including package.json and composer files first for caching)
+# Copy application files
 COPY . /var/www/html
 
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
+
+# Generate a fresh app key if one isn't provided, and cache config/routes
+RUN php artisan key:generate --force \
+    && php artisan config:clear \
+    && php artisan route:clear
 
 # Install Node dependencies and build Vite assets for production
 RUN npm install && npm run build
